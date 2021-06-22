@@ -7,6 +7,3 @@ module.exports = withPWA({
   },
   reactStrictMode: true,
 });
-// module.exports = {
-//   reactStrictMode: true,
-// };
