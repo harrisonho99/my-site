@@ -78,10 +78,9 @@ export default function Nav() {
         sizes='16x16'
         href='/icon/favicon-16x16.png'
       />
-      <link rel='manifest' href='/icon/manifest.json' />
-      <meta name='msapplication-TileColor' content='#ffffff' />
+      <meta name='msapplication-TileColor' content='#3d5afe' />
       <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
-      <meta name='theme-color' content='#ffffff' />
+      <meta name='theme-color' content='#3d5afe' />
       <meta charSet='utf-8' />
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta
@@ -92,50 +91,41 @@ export default function Nav() {
         name='keywords'
         content='developer, lap trinh vien , harrison, hoang'
       />
-      <meta name='theme-color' content='red' />
+      <meta name='theme-color' content='#3d5afe' />
       <meta name='mobile-web-app-capable' content='yes' />
-
       <meta name='apple-mobile-web-app-title' content='Harrison Ho' />
       <meta name='apple-mobile-web-app-capable' content='yes' />
       <meta name='apple-mobile-web-app-status-bar-style' content='default' />
-
-      <meta name='msapplication-navbutton-color' content='red' />
-      <meta name='msapplication-TileColor' content='red' />
+      <meta name='msapplication-navbutton-color' content='#3d5afe' />
+      <meta name='msapplication-TileColor' content='#3d5afe' />
       <meta name='msapplication-TileImage' content='ms-icon-144x144.png' />
-      <meta name='msapplication-config' content='/icons/browserconfig.xml' />
-
+      <meta name='msapplication-config' content='/icon/browserconfig.xml' />
       <meta name='application-name' content='Harrison Ho - Developer' />
       <meta name='msapplication-tooltip' content='Tooltip Text' />
       <meta name='msapplication-starturl' content='/' />
-
       <meta name='msapplication-tap-highlight' content='no' />
-
       <meta name='full-screen' content='yes' />
       <meta name='browsermode' content='application' />
-
       <meta name='nightmode' content='enable/disable' />
-
       <meta name='layoutmode' content='fitscreen/standard' />
-
       <meta name='imagemode' content='force' />
-
       <meta name='screen-orientation' content='portrait' />
       <link rel='manifest' href='/manifest.json' />
-      <meta name='msapplication-TileColor' content='#ffffff' />
+      <meta name='msapplication-TileColor' content='#3d5afe' />
       <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
-      <meta name='theme-color' content='#ffa733' />
-      <meta name='twitter:card' content='summary' />
+      <meta name='theme-color' content='#3d5afe' />
+      <meta name='twitter:card' content='Developer Harrion Ho' />
       <meta name='twitter:url' content='Developer Harrion Ho' />
       <meta name='twitter:title' content='Developer Harrion Ho' />
       <meta name='twitter:description' content='Developer Harrion Ho' />
-      <meta name='twitter:image' content='/icons/android-chrome-192x192.png' />
-      <meta name='twitter:creator' content='@DavidWShadow' />
+      <meta name='twitter:image' content='/icon/android-chrome-192x192.png' />
+      <meta name='twitter:creator' content='@Hotsnow199' />
       <meta property='og:type' content='website' />
       <meta property='og:title' content='Developer Harrion Ho' />
       <meta property='og:description' content='Developer Harrion Ho' />
       <meta property='og:site_name' content='Developer Harrion Ho' />
       <meta property='og:url' content='Developer Harrion Ho' />
-      <meta property='og:image' content='/icons/apple-touch-icon.png' />
+      <meta property='og:image' content='/icon/apple-touch-icon.png' />
     </Head>
   );
 }

@@ -1,0 +1,90 @@
+.ballons-wrapper {
+  overflow: visible;
+  vertical-align: middle;
+  line-height: 1.5em !important;
+  position: relative;
+  height: 600px;
+  max-width: 700px;
+}
+.purple-balloon {
+  width: 400px;
+  height: 400px;
+  top: 0px;
+  left: 0px;
+  background: #6a14ba;
+  border-radius: 250px;
+  z-index: -1;
+}
+.orange-balloon {
+  width: 180px;
+  height: 180px;
+  bottom: -40px;
+  right: -70px;
+  background: #ff8a00;
+  border-radius: 160px;
+  z-index: -2;
+  animation-direction: reverse;
+}
+.blue-balloon {
+  width: 220px;
+  height: 220px;
+  top: 0px;
+  right: -40px;
+  background: #00c1ff;
+  border-radius: 160px;
+  z-index: -3;
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+}
+.red-balloon {
+  width: 220px;
+  height: 220px;
+  bottom: 0px;
+  left: 0px;
+  background: #eb5757;
+  border-radius: 160px;
+  z-index: -4;
+  animation-direction: reverse;
+}
+.shape {
+  position: absolute;
+  -webkit-filter: blur(40px);
+  filter: blur(40px);
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+  -webkit-animation: random 7s infinite;
+  animation: random 7s infinite;
+  animation-duration: 7s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-name: random;
+}
+@keyframes random {
+  0% {
+    -webkit-transform: translate(0px, 0px) scale(1);
+    transform: translate(0px, 0px) scale(1);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  33% {
+    -webkit-transform: translate(30px, -50px) scale(1.1);
+    transform: translate(30px, -50px) scale(1.1);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  66% {
+    -webkit-transform: translate(-20px, 20px) scale(0.9);
+    transform: translate(-20px, 20px) scale(0.9);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) scale(1);
+    transform: translate(0px, 0px) scale(1);
+  }
+}
