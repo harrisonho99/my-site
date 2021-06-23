@@ -7,7 +7,7 @@ export default class ToggleTheme extends PureComponent<
 > {
   constructor(props: any) {
     super(props);
-    this.state = { check: false };
+    this.state = { check: true };
   }
   onSwitchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.checked;
