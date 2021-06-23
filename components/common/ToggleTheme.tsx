@@ -13,16 +13,17 @@ export default class ToggleTheme extends PureComponent<
     const value = event.target.checked;
     this.setState(() => ({ check: value }), this.toogleHTMLClass);
   };
+  light: themePreference = 'light';
+  dark: themePreference = 'dark';
+
   toogleHTMLClass = () => {
     const htmlElement = document.querySelector('html');
-    const light: themePreference = 'light';
-    const dark: themePreference = 'dark';
-    if (htmlElement && htmlElement.classList.contains(dark)) {
-      htmlElement.classList.remove(dark);
-      htmlElement.classList.add(light);
+    if (htmlElement && htmlElement.classList.contains(this.dark)) {
+      htmlElement.classList.remove(this.dark);
+      htmlElement.classList.add(this.light);
     } else if (htmlElement) {
-      htmlElement.classList.remove(light);
-      htmlElement.classList.add(dark);
+      htmlElement.classList.remove(this.light);
+      htmlElement.classList.add(this.dark);
     }
   };
   render = () => {
@@ -45,5 +46,11 @@ export default class ToggleTheme extends PureComponent<
         </label>
       </div>
     );
+  };
+  componentDidMount = () => {
+    const htmlElement = document.querySelector('html')!;
+    this.setState(() => ({
+      check: htmlElement.classList.contains(this.dark) ? true : false,
+    }));
   };
 }
