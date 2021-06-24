@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { v4 } from 'uuid';
 import ToggleTheme from '../../ToggleTheme';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { useRouter } from 'next/router';
 type Props = {
   show: boolean;
   setShow: (v: boolean) => void;
@@ -14,7 +15,8 @@ type Props = {
 function Nav({ setShow, show }: Props) {
   const [navWidth, setNavWidth] = useState(0);
   const navRef = useRef(null);
-
+  const isClosing = useRef(false);
+  const Router = useRouter();
   useEffect(() => {
     if (show) {
       setTimeout(() => {
@@ -22,13 +24,26 @@ function Nav({ setShow, show }: Props) {
       }, 100);
     }
   }, [show]);
-  const onHideModal = () => {
-    const node: HTMLElement = navRef.current!;
-    setNavWidth(0);
-    node.addEventListener('transitionend', () => {
-      setShow(false);
-    });
-  };
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', onHideModal);
+    return () => {
+      Router.events.off('routeChangeComplete', onHideModal);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function onHideModal() {
+    if (!isClosing.current) {
+      isClosing.current = true;
+      const node: HTMLElement = navRef.current!;
+      setNavWidth(0);
+      node.addEventListener('transitionend', () => {
+        setShow(false);
+        isClosing.current = false;
+      });
+    }
+  }
   if (!show) return null;
   return (
     <ModalWrapper onHideModal={onHideModal}>
@@ -65,7 +80,8 @@ function Nav({ setShow, show }: Props) {
                 <Link href={item.route}>
                   <a
                     className={`${
-                      window && window.location.pathname === item.route
+                      typeof window !== 'undefined' &&
+                      window.location.pathname === item.route
                         ? 'text-blue-500 dark:text-pink-500'
                         : ''
                     }`}
