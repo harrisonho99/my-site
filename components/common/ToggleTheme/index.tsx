@@ -1,6 +1,6 @@
 import { PureComponent, ChangeEvent } from 'react';
-import styles from '../../styles/common/Switch.module.css';
-import { themePreference } from '../../context/prefer-theme/schema/type';
+import styles from '../../../styles/common/Switch.module.css';
+import { themePreference } from '../../../context/prefer-theme/schema/type';
 export default class ToggleTheme extends PureComponent<
   any,
   { check: boolean }
