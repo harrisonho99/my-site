@@ -4,7 +4,7 @@ type themePreference = 'dark' | 'light';
 interface ThemeSchema {
   theme: themePreference;
   dispatchChangeThemeSchema: (theme: themePreference) => void;
-  onDispatchChangeTheme: (theme: themePreference) => void;
+  onDispatchChangeTheme: (cb: () => void) => void;
 }
 interface PreferThemeProviderProps {
   children: ReactElement;

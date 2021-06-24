@@ -78,9 +78,9 @@ export default function Nav() {
         sizes='16x16'
         href='/icon/favicon-16x16.png'
       />
-      <meta name='msapplication-TileColor' content='#3d5afe' />
+      <meta name='msapplication-TileColor' content='#171060' />
       <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
-      <meta name='theme-color' content='#3d5afe' />
+      <meta name='theme-color' content='#171060' />
       <meta charSet='utf-8' />
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta
@@ -91,13 +91,13 @@ export default function Nav() {
         name='keywords'
         content='developer, lap trinh vien , harrison, hoang'
       />
-      <meta name='theme-color' content='#3d5afe' />
+      <meta name='theme-color' content='#171060' />
       <meta name='mobile-web-app-capable' content='yes' />
       <meta name='apple-mobile-web-app-title' content='Harrison Ho' />
       <meta name='apple-mobile-web-app-capable' content='yes' />
       <meta name='apple-mobile-web-app-status-bar-style' content='default' />
-      <meta name='msapplication-navbutton-color' content='#3d5afe' />
-      <meta name='msapplication-TileColor' content='#3d5afe' />
+      <meta name='msapplication-navbutton-color' content='#171060' />
+      <meta name='msapplication-TileColor' content='#171060' />
       <meta name='msapplication-TileImage' content='ms-icon-144x144.png' />
       <meta name='msapplication-config' content='/icon/browserconfig.xml' />
       <meta name='application-name' content='Harrison Ho - Developer' />
@@ -111,9 +111,9 @@ export default function Nav() {
       <meta name='imagemode' content='force' />
       <meta name='screen-orientation' content='portrait' />
       <link rel='manifest' href='/manifest.json' />
-      <meta name='msapplication-TileColor' content='#3d5afe' />
+      <meta name='msapplication-TileColor' content='#171060' />
       <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
-      <meta name='theme-color' content='#3d5afe' />
+      <meta name='theme-color' content='#171060' />
       <meta name='twitter:card' content='Developer Harrion Ho' />
       <meta name='twitter:url' content='Developer Harrion Ho' />
       <meta name='twitter:title' content='Developer Harrion Ho' />

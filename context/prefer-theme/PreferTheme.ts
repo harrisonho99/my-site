@@ -7,7 +7,9 @@ class PreferTheme implements ThemeSchema {
   dispatchChangeThemeSchema = (theme: themePreference) => {
     this.theme = theme;
   };
-  onDispatchChangeTheme = (theme: themePreference) => {};
+  onDispatchChangeTheme = (cb: (theme: themePreference) => void) => {
+    cb(this.theme);
+  };
 }
 
 const ThemeState = new PreferTheme('dark');

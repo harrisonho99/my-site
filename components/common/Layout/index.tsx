@@ -2,6 +2,8 @@ import type { LayoutProps } from './schema/type';
 import { withPreferTheme } from '../../../context/prefer-theme/withPreferTheme';
 import { FC, useLayoutEffect } from 'react';
 import type { themePreference } from '../../../context/prefer-theme/schema/type';
+import Header from '../Header';
+import Footer from '../Footer';
 const Layout: FC<LayoutProps> = ({ children, themeModeState }) => {
   useLayoutEffect(() => {
     const HMTLNode = document.querySelector('html')!;
@@ -13,6 +15,12 @@ const Layout: FC<LayoutProps> = ({ children, themeModeState }) => {
       HMTLNode.classList.add(themeModeState.theme);
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
 };
 export default withPreferTheme(Layout);
