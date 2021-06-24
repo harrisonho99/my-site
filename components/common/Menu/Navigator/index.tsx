@@ -66,7 +66,7 @@ function Nav({ setShow, show }: Props) {
                   <a
                     className={`${
                       window && window.location.pathname === item.route
-                        ? 'text-blue-300 dark:text-green-300'
+                        ? 'text-blue-500 dark:text-pink-500'
                         : ''
                     }`}
                   >
