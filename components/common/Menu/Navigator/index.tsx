@@ -10,13 +10,11 @@ type Props = {
   show: boolean;
   setShow: (v: boolean) => void;
 };
-let count = 0;
-function Nav({ setShow, show }: Props) {
-  ++count;
-  console.log(count);
 
+function Nav({ setShow, show }: Props) {
   const [navWidth, setNavWidth] = useState(0);
   const navRef = useRef(null);
+
   useEffect(() => {
     if (show) {
       setTimeout(() => {
@@ -65,7 +63,15 @@ function Nav({ setShow, show }: Props) {
             {LIST_ROUTER.map((item) => (
               <li className='mt-10 font-semibold text-xl' key={v4()}>
                 <Link href={item.route}>
-                  <a>{item.title}</a>
+                  <a
+                    className={`${
+                      window && window.location.pathname === item.route
+                        ? 'text-blue-300 dark:text-green-300'
+                        : ''
+                    }`}
+                  >
+                    {item.title}
+                  </a>
                 </Link>
               </li>
             ))}
