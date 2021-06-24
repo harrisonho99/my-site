@@ -20,8 +20,8 @@ export default function ModalWrapper({ children, onHideModal }: Props) {
   return (
     <div
       onClick={onHideModal}
-      className={`bg-black fixed top-0 left-0  bg-opacity-70 z-50 w-screen h-screen`}
-      style={{ background: `rgba(76, 175, 80, 0.7)` }}
+      className={`fixed top-0 left-0 z-50 w-screen h-screen`}
+      style={{ background: `rgba(0, 0, 0, 0.75)` }}
     >
       {children}
     </div>
