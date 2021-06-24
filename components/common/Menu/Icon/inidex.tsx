@@ -1,10 +1,12 @@
 type Props = {
-  toggleNav: () => void;
+  toggleNav: (v: boolean) => void;
 };
 export default function PrimaryMenuIcon({ toggleNav }: Props) {
   return (
     <button
-      onClick={toggleNav}
+      onClick={() => {
+        toggleNav(true);
+      }}
       className='appearance-none border-none bg-transparent outline-none focus-within:outline-none '
     >
       <svg

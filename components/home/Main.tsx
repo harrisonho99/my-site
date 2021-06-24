@@ -1,5 +1,4 @@
 import { PureComponent } from 'react';
-import ToggleTheme from '../common/ToggleTheme';
 import RoundedAvatar from '../common/Avatar/RoundedAvatar';
 export default class Main extends PureComponent {
   render = () => {
@@ -19,9 +18,6 @@ export default class Main extends PureComponent {
               github
             </a>
           </h2>
-          <div className='mt-6 focus:'>
-            <ToggleTheme />
-          </div>
         </div>
       </main>
     );

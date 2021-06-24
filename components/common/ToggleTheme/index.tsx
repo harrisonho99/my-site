@@ -32,6 +32,7 @@ export default class ToggleTheme extends PureComponent<
       <div>
         <label className={styles['switch']}>
           <input
+            hidden
             type='checkbox'
             checked={check}
             onChange={this.onSwitchChange}
