@@ -79,7 +79,7 @@ function Nav({ setShow, show }: Props) {
           </div>
           <ul>
             {LIST_ROUTER.map((item) => (
-              <li className='mt-10 font-semibold text-xl' key={v4()}>
+              <li className='mt-8 font-base text-xl' key={v4()}>
                 <Link href={item.route}>
                   <a
                     className={`${

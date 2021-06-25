@@ -4,28 +4,28 @@ type SelectValue = {
   value: any;
   label: string;
 };
-type Color = string | undefined;
+type Color = string;
 interface Props {
   options: SelectValue[];
   onChange: (value: SelectValue, name: string | undefined) => void;
   defaultValue?: SelectValue;
-  value: SelectValue;
-  containerBorderRadius: number;
-  className: string;
+  value?: SelectValue;
+  containerBorderRadius?: number;
+  className?: string;
   id: string;
-  containerHeight: number;
+  containerHeight?: number;
   name: string;
   placeholder?: string;
-  primaryColor: Color;
-  secondaryColor: Color;
-  optionColor: Color;
-  borderColor: Color;
-  valueContainerCorlor: Color;
-  menuBgColor: Color;
-  indicatorColor: Color;
-  labelColor: Color;
-  boxColor: Color;
-  boxBackgroundColor: Color;
+  primaryColor?: Color;
+  secondaryColor?: Color;
+  optionColor?: Color;
+  borderColor?: Color;
+  valueContainerCorlor?: Color;
+  menuBgColor?: Color;
+  indicatorColor?: Color;
+  labelColor?: Color;
+  textColor?: Color;
+  boxBackgroundColor?: Color;
 }
 
 export default function CustomSelect({
@@ -40,7 +40,7 @@ export default function CustomSelect({
   placeholder,
   value,
   boxBackgroundColor,
-  boxColor,
+  textColor,
   labelColor,
   borderColor = 'transparent',
   valueContainerCorlor = 'black',
@@ -66,7 +66,7 @@ export default function CustomSelect({
       onChange={onSelectChange as any}
       styles={{
         placeholder: (base) => ({ ...base, color: labelColor }),
-        singleValue: (base) => ({ ...base, color: boxColor, border: 'none' }),
+        singleValue: (base) => ({ ...base, color: textColor, border: 'none' }),
         control: (base) => {
           return {
             ...base,
@@ -78,7 +78,7 @@ export default function CustomSelect({
             borderRadius: containerBorderRadius,
             '&:focus': { borderColor: 'transparent', outline: 'none' },
             height: containerHeight,
-            color: boxColor,
+            color: textColor,
             backgroundColor: boxBackgroundColor,
           };
         },

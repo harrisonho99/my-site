@@ -1,2 +1,3 @@
 const CHANGE_TAB = 'CHANGE_TAB';
+const CREATE_NEW_TAB = 'CREATE_NEW_TAB';
 export { CHANGE_TAB };

@@ -1,9 +1,6 @@
 import { EnhanceAction } from '../schema/type';
-import { State } from '../schema/type';
-export default function tabsReducer(
-  state: State | {} = {},
-  action: EnhanceAction
-) {
+
+export default function tabsReducer(state: any = {}, action: EnhanceAction) {
   switch (action.type) {
     default:
       return state;

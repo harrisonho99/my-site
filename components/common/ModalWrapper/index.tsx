@@ -11,7 +11,6 @@ export default function ModalWrapper({
   onHideModal,
   ...restProps
 }: Props) {
-  console.log({ restProps });
   const count = useRef(0);
   useEffect(() => {
     if (!count.current) {
@@ -22,7 +21,6 @@ export default function ModalWrapper({
       document.body.style.overflowY = 'auto';
     };
   }, []);
-
   return (
     <div
       {...restProps}
