@@ -46,7 +46,10 @@ function Nav({ setShow, show }: Props) {
   }
   if (!show) return null;
   return (
-    <ModalWrapper onHideModal={onHideModal}>
+    <ModalWrapper
+      onHideModal={onHideModal}
+      style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
+    >
       <nav
         ref={navRef}
         className={`h-full relative transform transition-all duration-500 overflow-hidden`}
