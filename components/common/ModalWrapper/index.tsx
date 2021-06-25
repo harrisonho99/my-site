@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useRef } from 'react';
 
 type Props = {
   children: ReactElement;
-  onHideModal: () => void;
+  onHideModal?: () => void;
   [restProps: string]: any;
 };
 
@@ -24,7 +24,9 @@ export default function ModalWrapper({
   return (
     <div
       {...restProps}
-      onClick={onHideModal}
+      onClick={() => {
+        if (typeof onHideModal === 'function') onHideModal();
+      }}
       className={`fixed top-0 left-0 z-50 w-screen h-screen bg-opacity-75 `}
     >
       {children}

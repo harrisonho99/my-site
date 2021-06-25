@@ -112,20 +112,23 @@ export default function Nav() {
       <meta name='screen-orientation' content='portrait' />
       <link rel='manifest' href='/manifest.json' />
       <meta name='msapplication-TileColor' content='#171060' />
-      <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
+      <meta
+        name='msapplication-TileImage'
+        content='/icon/maskable_icon_x512.png'
+      />
       <meta name='theme-color' content='#171060' />
-      <meta name='twitter:card' content='Developer Harrion Ho' />
-      <meta name='twitter:url' content='Developer Harrion Ho' />
-      <meta name='twitter:title' content='Developer Harrion Ho' />
-      <meta name='twitter:description' content='Developer Harrion Ho' />
-      <meta name='twitter:image' content='/icon/android-chrome-192x192.png' />
+      <meta name='twitter:card' content='Harrion Ho' />
+      <meta name='twitter:url' content='Harrion Ho' />
+      <meta name='twitter:title' content='Harrion Ho' />
+      <meta name='twitter:description' content='Harrion Ho' />
+      <meta name='twitter:image' content='/icon/maskable_icon_x512.png' />
       <meta name='twitter:creator' content='@Hotsnow199' />
       <meta property='og:type' content='website' />
-      <meta property='og:title' content='Developer Harrion Ho' />
-      <meta property='og:description' content='Developer Harrion Ho' />
-      <meta property='og:site_name' content='Developer Harrion Ho' />
-      <meta property='og:url' content='Developer Harrion Ho' />
-      <meta property='og:image' content='/icon/apple-touch-icon.png' />
+      <meta property='og:title' content='Harrison Ho' />
+      <meta property='og:description' content='Harrion Ho' />
+      <meta property='og:site_name' content='Harrion Ho' />
+      <meta property='og:url' content='Harrion Ho' />
+      <meta property='og:image' content='/icon/maskable_icon_x512.png' />
     </Head>
   );
 }

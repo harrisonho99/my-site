@@ -1,4 +1,5 @@
 import Select from 'react-select';
+import { grey, blue, indigo } from '@material-ui/core/colors';
 
 type SelectValue = {
   value: any;
@@ -7,7 +8,7 @@ type SelectValue = {
 type Color = string;
 interface Props {
   options: SelectValue[];
-  onChange: (value: SelectValue, name: string | undefined) => void;
+  onChange?: (value: SelectValue, name: string) => void;
   defaultValue?: SelectValue;
   value?: SelectValue;
   containerBorderRadius?: number;
@@ -27,28 +28,27 @@ interface Props {
   textColor?: Color;
   boxBackgroundColor?: Color;
 }
-
 export default function CustomSelect({
-  onChange,
+  onChange = () => {},
   options = [],
   defaultValue,
-  primaryColor = 'white',
-  secondaryColor = 'orange',
-  optionColor = 'black',
   name,
   id,
   placeholder,
   value,
-  boxBackgroundColor,
-  textColor,
   labelColor,
-  borderColor = 'transparent',
-  valueContainerCorlor = 'black',
-  menuBgColor = 'white',
-  indicatorColor = 'black',
   containerBorderRadius = 3,
   className,
   containerHeight = 42,
+  borderColor = indigo[900],
+  optionColor = grey[900],
+  valueContainerCorlor = grey[900],
+  boxBackgroundColor = grey[300],
+  indicatorColor = blue[900],
+  menuBgColor = grey[100],
+  textColor = blue[900],
+  primaryColor = blue[300],
+  secondaryColor = blue[100],
 }: Props) {
   const onSelectChange = (value: SelectValue) => {
     if (typeof onChange === 'function') {

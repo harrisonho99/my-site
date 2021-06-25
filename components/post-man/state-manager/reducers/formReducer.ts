@@ -1,0 +1,10 @@
+import type { EnhanceAction } from '../schema/type';
+
+export default function formReducer(state: any = {}, action: EnhanceAction) {
+  switch (action.type) {
+    case '':
+      return state;
+    default:
+      return state;
+  }
+}
