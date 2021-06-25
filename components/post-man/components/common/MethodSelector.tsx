@@ -9,7 +9,7 @@ export default function MethodSelector() {
     setSelectValue(() => value);
   };
   return (
-    <div className='w-28'>
+    <div className='w-24'>
       <Select
         options={options}
         onChange={onSelectChange}

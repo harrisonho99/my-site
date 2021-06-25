@@ -40,7 +40,7 @@ export default function CustomSelect({
   containerBorderRadius = 3,
   className,
   containerHeight = 42,
-  borderColor = indigo[900],
+  borderColor = 'transparent',
   optionColor = grey[900],
   valueContainerCorlor = grey[900],
   boxBackgroundColor = grey[300],

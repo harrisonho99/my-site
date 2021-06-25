@@ -12,26 +12,32 @@ export default function RoundedAvatar() {
   };
   return (
     <>
-      {showModal ? (
-        <ModalWrapper onHideModal={onHideModal}>
-          <div
-            className={`w-10/12 m-auto h-full flex justify-center items-center transition-transform duration-300 transform -translate-y-20`}
-            style={{ maxWidth: 700, minWidth: 300 }}
-          >
-            <ScaleY>
-              <Image
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-                width={500}
-                height={500}
-                src='/icon/maskable_icon_x512.png'
-                alt='Harrison Ho'
-              />
-            </ScaleY>
-          </div>
-        </ModalWrapper>
-      ) : null}
+      <ModalWrapper
+        onHideModal={onHideModal}
+        style={{
+          backgroundColor: 'rgba(10,10,10,0.8)',
+          display: showModal ? 'block' : 'none',
+        }}
+      >
+        <div
+          className={`w-10/12 m-auto h-full flex justify-center items-center transition-transform duration-300 transform -translate-y-20`}
+          style={{ maxWidth: 700, minWidth: 300 }}
+        >
+          <ScaleY>
+            <Image
+              priority
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              width={500}
+              height={500}
+              src='/icon/maskable_icon_x512.png'
+              alt='Harrison Ho'
+            />
+          </ScaleY>
+        </div>
+      </ModalWrapper>
+
       <div
         className='w-40 h-40 rounded-full overflow-hidden cursor-pointer'
         onClick={onShowModal}
