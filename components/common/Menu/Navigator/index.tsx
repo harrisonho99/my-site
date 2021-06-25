@@ -7,6 +7,7 @@ import { v4 } from 'uuid';
 import ToggleTheme from '../../ToggleTheme';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useRouter } from 'next/router';
+import Contact from '../../Contact';
 type Props = {
   show: boolean;
   setShow: (v: boolean) => void;
@@ -95,6 +96,9 @@ function Nav({ setShow, show }: Props) {
               </li>
             ))}
           </ul>
+          {/* <div className='h-full'>
+            <Contact />
+          </div> */}
         </div>
       </nav>
     </ModalWrapper>
