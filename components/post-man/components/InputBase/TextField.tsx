@@ -39,7 +39,7 @@ export default function TextField() {
             style={{ outline: 'none' }}
             onClick={onClearInput}
           >
-            <CloseIcon className='text-indigo-800' />
+            <CloseIcon className='text-indigo-600' />
           </IconButton>
         </div>
       ) : null}
