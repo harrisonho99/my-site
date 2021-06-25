@@ -2,6 +2,7 @@ import Image from 'next/image';
 import ModalWrapper from '../ModalWrapper';
 import { useState } from 'react';
 import ScaleY from '../TransitionWrapper/ScaleY';
+import styles from '../../../styles/common/Avartar.module.css';
 export default function RoundedAvatar() {
   const [showModal, setShowModal] = useState(false);
   const onHideModal = () => {
@@ -41,6 +42,7 @@ export default function RoundedAvatar() {
       <div
         className='w-40 h-40 rounded-full overflow-hidden cursor-pointer'
         onClick={onShowModal}
+        id={styles['logo']}
       >
         <Image
           src='/icon/maskable_icon_x512.png'
