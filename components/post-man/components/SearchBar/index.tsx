@@ -25,6 +25,6 @@ class SearchBar extends PureComponent {
 }
 
 export default function Wrapper(props: any) {
-  const matches = useMediaQuery('(max-width:410px)');
+  const matches = useMediaQuery('(max-width:450px)');
   return <SearchBar {...props} matches={matches} />;
 }
