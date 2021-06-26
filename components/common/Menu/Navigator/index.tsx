@@ -8,6 +8,7 @@ import ToggleTheme from '../../ToggleTheme';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useRouter } from 'next/router';
 import Contact from '../../Contact';
+
 type Props = {
   show: boolean;
   setShow: (v: boolean) => void;
@@ -53,18 +54,18 @@ function Nav({ setShow, show }: Props) {
     >
       <nav
         ref={navRef}
-        className={`h-full relative transform transition-all duration-500 overflow-hidden`}
+        className={`h-screen relative transform transition-all duration-500 overflow-hidden`}
         style={{ width: navWidth }}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
         <div
-          className='w-full h-full bg-gray-200 dark:bg-primary-dark backdrop-filter backdrop-saturate-200 backdrop-blur-xl absolute z-10 bg-opacity-90'
+          className='w-full h-screen bg-gray-200 dark:bg-primary-dark backdrop-filter backdrop-saturate-200 backdrop-blur-xl absolute z-10 bg-opacity-90'
           id='nav-overlay'
         />
 
-        <div className='relative z-20 top-0 left-0 bg-transparent text-black dark:text-gray-100 h-full w-full p-6'>
+        <div className='relative z-20 top-0 left-0 bg-transparent text-black dark:text-gray-100 h-full w-full p-6 pb-2'>
           <div className='flex w-full'>
             <div>
               <ToggleTheme />
@@ -96,9 +97,9 @@ function Nav({ setShow, show }: Props) {
               </li>
             ))}
           </ul>
-          {/* <div className='h-full'>
+          <div className='h-10 fixed bottom-14 right-0 w-full pl-6'>
             <Contact />
-          </div> */}
+          </div>
         </div>
       </nav>
     </ModalWrapper>

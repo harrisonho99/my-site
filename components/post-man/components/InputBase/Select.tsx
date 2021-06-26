@@ -37,18 +37,18 @@ export default function CustomSelect({
   placeholder,
   value,
   labelColor,
-  containerBorderRadius = 3,
+  containerBorderRadius = 6,
   className,
-  containerHeight = 42,
+  containerHeight = 40,
   borderColor = 'transparent',
-  optionColor = grey[900],
-  valueContainerCorlor = grey[900],
-  boxBackgroundColor = grey[300],
+  optionColor = grey[700],
+  valueContainerCorlor = grey[700],
+  boxBackgroundColor = grey[200],
   indicatorColor = blue[900],
   menuBgColor = grey[100],
   textColor = blue[900],
-  primaryColor = blue[300],
-  secondaryColor = blue[100],
+  primaryColor = indigo[400],
+  secondaryColor = indigo[100],
 }: Props) {
   const onSelectChange = (value: SelectValue) => {
     if (typeof onChange === 'function') {
@@ -115,7 +115,11 @@ export default function CustomSelect({
           ...base,
           display: 'none',
         }),
-        valueContainer: (base) => ({ ...base, color: valueContainerCorlor }),
+        valueContainer: (base) => ({
+          ...base,
+          padding: '2px 4px',
+          color: valueContainerCorlor,
+        }),
       }}
       theme={(theme) => {
         return {

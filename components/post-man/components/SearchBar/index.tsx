@@ -9,7 +9,7 @@ class SearchBar extends PureComponent {
     const { matches } = this.props as any;
     return (
       <Container className='mt-20' maxWidth='md'>
-        <Paper>
+        <Paper elevation={0}>
           <div className='flex flex-nowrap'>
             <MethodSelector />
             <div

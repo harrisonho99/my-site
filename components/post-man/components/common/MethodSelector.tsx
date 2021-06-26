@@ -18,6 +18,7 @@ export default function MethodSelector() {
         name='method'
         placeholder='Method'
         containerBorderRadius={5}
+        className='shadow-md'
       />
     </div>
   );
