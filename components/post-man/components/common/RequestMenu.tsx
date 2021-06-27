@@ -24,10 +24,10 @@ export default function RequestMenu() {
         {listMenu.map((item) => (
           <SwiperSlide key={item.value}>
             <div
-              className={`dark:text-gray-200 text-center text-lg font-medium border-transparent transform transition-all duration-500 h-10 w-full flex items-center justify-center ${
+              className={`text-center text-lg font-medium border-transparent transform transition-all duration-500 h-10 w-full flex items-center justify-center ${
                 currentMenuShow === item.value
                   ? 'text-white border-b-2 rounded-lg bg-indigo-700 dark:bg-blue-700 dark:text-white shadow-lg'
-                  : ''
+                  : 'dark:text-blue-400'
               }`}
               style={{
                 minWidth: 120,
