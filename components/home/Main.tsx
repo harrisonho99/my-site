@@ -8,7 +8,9 @@ export default class Main extends PureComponent {
           <div className='flex justify-center mb-6'>
             <RoundedAvatar />
           </div>
-          <h1 className='text-6xl font-bold mb-10 '>Hello I&apos;m Harrison</h1>
+          <h1 className='text-6xl font-bold mb-10 ' id='gradient-text'>
+            Hello I&apos;m Harrison
+          </h1>
           <h2 className='text-2xl font-semibold dark:text-purple-50'>
             Check out my{' '}
             <a

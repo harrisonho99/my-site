@@ -14,6 +14,18 @@ body {
   background-color: #3949ab;
 }
 
+#gradient-text {
+  background: -webkit-linear-gradient(#eee, rgb(29, 129, 151));
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgb(47, 61, 255) 0%,
+    rgb(233, 44, 81) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 ::-webkit-scrollbar {
   width: 10px;
   height: 8px;
