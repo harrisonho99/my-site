@@ -1,10 +1,8 @@
 import { PureComponent, ChangeEvent } from 'react';
 import styles from '../../../styles/common/Switch.module.css';
 import { themePreference } from '../../../context/prefer-theme/schema/type';
-export default class ToggleTheme extends PureComponent<
-  any,
-  { check: boolean }
-> {
+import { withPreferTheme } from '../../../context/prefer-theme/withPreferTheme';
+class ToggleTheme extends PureComponent<any, { check: boolean }> {
   constructor(props: any) {
     super(props);
     this.state = { check: true };
@@ -18,12 +16,18 @@ export default class ToggleTheme extends PureComponent<
 
   toogleHTMLClass = () => {
     const htmlElement = document.querySelector('html');
+    const {
+      themeModeState: { dispatchChangeThemeSchema },
+    } = this.props;
+
     if (htmlElement && htmlElement.classList.contains(this.dark)) {
       htmlElement.classList.remove(this.dark);
       htmlElement.classList.add(this.light);
+      dispatchChangeThemeSchema(this.light);
     } else if (htmlElement) {
       htmlElement.classList.remove(this.light);
       htmlElement.classList.add(this.dark);
+      dispatchChangeThemeSchema(this.dark);
     }
   };
   render = () => {
@@ -55,3 +59,4 @@ export default class ToggleTheme extends PureComponent<
     }));
   };
 }
+export default withPreferTheme(ToggleTheme);

@@ -6,8 +6,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import 'tailwindcss/tailwind.css';
 import { indigo } from '@material-ui/core/colors';
+import styles from '../../../../styles/post-man/Table.module.css';
 
 const useStyles = makeStyles({
   table: {
@@ -15,55 +15,41 @@ const useStyles = makeStyles({
     color: indigo[900],
   },
   cell: {
-    padding: '2px !important',
+    padding: '10px !important',
     height: 40,
   },
 });
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return { name, calories, fat, carbs, protein };
+function createData(key: string, value: string, description?: string) {
+  return { key, value, description };
 }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+const rows = [createData('username', 'hoang'), createData('password', '1234')];
 
 export default function CustomTable() {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} elevation={0}>
+    <TableContainer component={Paper} elevation={3}>
       <Table
-        className={`${classes.table} bg-gray-200 bg-opacity-100 dark:bg-gray-700 `}
+        className={`${classes.table}`}
+        id={styles['table-root']}
         aria-label='simple table'
       >
         <TableHead>
           <TableRow>
-            <TableCell
-              className='text-gray-900'
-              style={{ fontWeight: 600, fontSize: 14 }}
-            >
+            <TableCell className='' style={{ fontWeight: 600, fontSize: 14 }}>
               KEY
             </TableCell>
             <TableCell
-              className='text-gray-900'
+              className=''
               align='left'
               style={{ fontWeight: 600, fontSize: 14 }}
             >
               VALUE
             </TableCell>
             <TableCell
-              className='text-gray-900'
+              className=''
               align='left'
               style={{ fontWeight: 600, fontSize: 14 }}
             >
@@ -71,9 +57,9 @@ export default function CustomTable() {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody className='text-indigo-600 '>
+        <TableBody className=' '>
           {rows.map((row) => (
-            <TableRow key={row.name}>
+            <TableRow key={row.key}>
               <TableCell
                 component='th'
                 scope='row'
@@ -81,19 +67,22 @@ export default function CustomTable() {
               >
                 <input
                   type='text'
-                  className='rounded-sm w-32 h-full bg-transparent border border-gray-100'
+                  className='rounded-sm w-24 h-full bg-transparent'
+                  defaultValue={row.key}
                 />
               </TableCell>
               <TableCell align='left' className={`${classes.cell}`}>
                 <input
                   type='text'
-                  className='rounded-sm w-32 h-full bg-transparent border border-gray-100'
+                  className='rounded-sm w-full h-full bg-transparent'
+                  defaultValue={row.value}
                 />
               </TableCell>
               <TableCell align='left' className={`${classes.cell}`}>
                 <input
                   type='text'
-                  className='rounded-sm h-full w-full transparent bg-transparent border border-gray-100'
+                  className='rounded-sm h-full w-full bg-transparent'
+                  defaultValue={row.description}
                 />
               </TableCell>
             </TableRow>

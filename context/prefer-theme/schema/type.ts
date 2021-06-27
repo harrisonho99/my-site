@@ -1,10 +1,13 @@
 import { ReactElement } from 'react';
-type themePreference = 'dark' | 'light';
 
+type themePreference = 'dark' | 'light';
+type subscriber = (theme: themePreference) => void;
 interface ThemeSchema {
   theme: themePreference;
+  subscribers: subscriber[];
   dispatchChangeThemeSchema: (theme: themePreference) => void;
   onDispatchChangeTheme: (cb: (theme: themePreference) => void) => void;
+  subscribe: (subscriber: subscriber) => () => void;
 }
 interface PreferThemeProviderProps {
   children: ReactElement;
@@ -19,4 +22,5 @@ export type {
   PreferThemeProviderProps,
   PreferThemeProviderState,
   themePreference,
+  subscriber,
 };

@@ -13,8 +13,9 @@ export default function RequestMenu() {
   const onMenuClick = (v: string) => {
     setCurrentMenuShow(() => v);
   };
+
   return (
-    <div className='w-full'>
+    <div className='w-full h-12'>
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
@@ -25,7 +26,7 @@ export default function RequestMenu() {
             <div
               className={`text-gray-700 dark:text-gray-100 text-center text-lg font-semibold border-transparent transform transition-all duration-200 ${
                 currentMenuShow === item.value
-                  ? 'text-yellow-600 dark:text-indigo-400 border-b-2 dark:border-indigo-400 border-yellow-600'
+                  ? 'text-blue-800 dark:text-blue-100 border-blue-400  border-b-2'
                   : ''
               }`}
               onClick={() => {

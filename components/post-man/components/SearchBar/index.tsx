@@ -2,14 +2,13 @@ import { PureComponent } from 'react';
 import MethodSelector from '../common/MethodSelector';
 import TextField from '../InputBase/TextField';
 import HighlightBtn from '../ButtonBase/HighlightBtn';
-import { useMediaQuery, Container, Paper } from '@material-ui/core';
+import { Container, Paper } from '@material-ui/core';
 
-class SearchBar extends PureComponent {
+export default class SearchBar extends PureComponent {
   render = () => {
-    const { matches } = this.props as any;
     return (
       <Container className='mt-20' maxWidth='md'>
-        <Paper elevation={0}>
+        <Paper elevation={0} style={{ backgroundColor: 'transparent' }}>
           <div className='flex flex-nowrap'>
             <MethodSelector />
             <div
@@ -26,9 +25,4 @@ class SearchBar extends PureComponent {
       </Container>
     );
   };
-}
-
-export default function Wrapper(props: any) {
-  const matches = useMediaQuery('(max-width:500px)');
-  return <SearchBar {...props} matches={matches} />;
 }
