@@ -31,7 +31,7 @@ export function useMUIConfigureTheme(
             main: mode === 'light' ? '#4338CA' : '#BE185D',
           },
           secondary: {
-            main: mode === 'light' ? '#4B5563' : '#1F2937',
+            main: mode === 'light' ? '#F3F4F6' : '#1F2937',
           },
           error: {
             main: '#DC2626',
