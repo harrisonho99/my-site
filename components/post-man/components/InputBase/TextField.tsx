@@ -25,7 +25,7 @@ export default function TextField() {
     <div className='w-full relative'>
       <input
         type='text'
-        className='w-full pl-3 pr-8 rounded-md h-10 bg-gray-200 shadow-lg hover:bg-gray-100 focus:bg-gray-50 transform transition-colors duration-500 text-indigo-900'
+        className='w-full pl-3 pr-8 rounded-md h-10 bg-gray-200 shadow-lg hover:bg-gray-100 focus:bg-gray-50 transform transition-all duration-300 text-indigo-900 dark:bg-gray-800 dark:text-gray-200'
         placeholder='URL'
         value={input}
         onChange={onInputChange}

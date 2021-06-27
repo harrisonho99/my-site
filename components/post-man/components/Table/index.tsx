@@ -1,3 +1,4 @@
+import styles from '../../../../styles/post-man/Table.module.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,7 +8,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { indigo } from '@material-ui/core/colors';
-import styles from '../../../../styles/post-man/Table.module.css';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import RoundedAddButton from '../ButtonBase/RoundedAddButton';
+import { useState } from 'react';
+import { v4 } from 'uuid';
 
 const useStyles = makeStyles({
   table: {
@@ -20,75 +25,105 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(key: string, value: string, description?: string) {
-  return { key, value, description };
+function createData(
+  key: string,
+  value: string,
+  id: string,
+  description?: string
+) {
+  return { key, value, description, id };
 }
 
-const rows = [createData('username', 'hoang'), createData('password', '1234')];
-
 export default function CustomTable() {
+  const [rows, setRows] = useState([
+    createData('username', 'hoang', v4(), ''),
+    createData('password', '1234', v4(), ''),
+  ]);
   const classes = useStyles();
+  const onAddField = () => {
+    setRows((current) => current.concat(createData('', '', v4(), '')));
+  };
+  const onDeleteField = (id: string) => {
+    setRows((current) => current.filter((item) => item.id !== id));
+  };
 
   return (
-    <TableContainer component={Paper} elevation={3}>
-      <Table
-        className={`${classes.table}`}
-        id={styles['table-root']}
-        aria-label='simple table'
-      >
-        <TableHead>
-          <TableRow>
-            <TableCell className='' style={{ fontWeight: 600, fontSize: 14 }}>
-              KEY
-            </TableCell>
-            <TableCell
-              className=''
-              align='left'
-              style={{ fontWeight: 600, fontSize: 14 }}
-            >
-              VALUE
-            </TableCell>
-            <TableCell
-              className=''
-              align='left'
-              style={{ fontWeight: 600, fontSize: 14 }}
-            >
-              DESCRIPTION
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody className=' '>
-          {rows.map((row) => (
-            <TableRow key={row.key}>
+    <div className='relative mb-10'>
+      <TableContainer component={Paper} elevation={3}>
+        <Table
+          className={`${classes.table}`}
+          id={styles['table-root']}
+          aria-label='simple table'
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell className='' style={{ fontWeight: 600, fontSize: 14 }}>
+                KEY
+              </TableCell>
+              <TableCell align='left' style={{ fontWeight: 600, fontSize: 14 }}>
+                VALUE
+              </TableCell>
+              <TableCell align='left' style={{ fontWeight: 600, fontSize: 14 }}>
+                DESCRIPTION
+              </TableCell>
               <TableCell
-                component='th'
-                scope='row'
-                className={`${classes.cell}`}
+                align='center'
+                style={{ fontWeight: 600, fontSize: 14 }}
               >
-                <input
-                  type='text'
-                  className='rounded-sm w-24 h-full bg-transparent'
-                  defaultValue={row.key}
-                />
-              </TableCell>
-              <TableCell align='left' className={`${classes.cell}`}>
-                <input
-                  type='text'
-                  className='rounded-sm w-full h-full bg-transparent'
-                  defaultValue={row.value}
-                />
-              </TableCell>
-              <TableCell align='left' className={`${classes.cell}`}>
-                <input
-                  type='text'
-                  className='rounded-sm h-full w-full bg-transparent'
-                  defaultValue={row.description}
-                />
+                DELETE
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody className=' '>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell
+                  component='th'
+                  scope='row'
+                  className={`${classes.cell}`}
+                >
+                  <input
+                    type='text'
+                    className='rounded-sm w-24 h-full bg-transparent'
+                    defaultValue={row.key}
+                  />
+                </TableCell>
+                <TableCell align='left' className={`${classes.cell}`}>
+                  <input
+                    type='text'
+                    className='rounded-sm w-full h-full bg-transparent'
+                    defaultValue={row.value}
+                  />
+                </TableCell>
+                <TableCell align='left' className={`${classes.cell}`}>
+                  <input
+                    type='text'
+                    className='rounded-sm h-full w-full bg-transparent'
+                    defaultValue={row.description}
+                  />
+                </TableCell>
+                <TableCell component='th' scope='row'>
+                  <div className={`flex justify-center items-center`}>
+                    <IconButton
+                      aria-label='delete'
+                      className='bg-red-500 w-7 h-7'
+                      style={{ background: '#EF4444' }}
+                      onClick={() => {
+                        onDeleteField(row.id);
+                      }}
+                    >
+                      <DeleteIcon fontSize='small' />
+                    </IconButton>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <div className='float-right mt-2'>
+        <RoundedAddButton onClick={onAddField} />
+      </div>
+    </div>
   );
 }

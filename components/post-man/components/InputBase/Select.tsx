@@ -47,8 +47,8 @@ export default function CustomSelect({
   indicatorColor = blue[900],
   menuBgColor = grey[100],
   textColor = blue[900],
-  primaryColor = indigo[400],
-  secondaryColor = indigo[100],
+  primaryColor = indigo[600],
+  secondaryColor = indigo[200],
 }: Props) {
   const onSelectChange = (value: SelectValue) => {
     if (typeof onChange === 'function') {

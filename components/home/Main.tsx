@@ -20,6 +20,11 @@ export default class Main extends PureComponent {
               github
             </a>
           </h2>
+          <h3 className='font-medium text-xl mt-14 text-center text-blue-500 hover:text-blue-600'>
+            <a href='https://www.notion.so/React-Ruleset-eb86b87d314746728d51c27af924d107'>
+              🎉 React cheat sheet
+            </a>
+          </h3>
         </div>
       </main>
     );

@@ -1,6 +1,6 @@
 import { PureComponent, Component, FC } from 'react';
 import { Theme } from './preferThemeContext';
-
+import { ThemeSchema } from './schema/type';
 interface withPreferThemeState {
   comsumerState: object;
 }
@@ -31,3 +31,5 @@ export function withPreferTheme(
     }
   };
 }
+
+export type { ThemeSchema };

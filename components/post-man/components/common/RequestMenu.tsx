@@ -17,24 +17,27 @@ export default function RequestMenu() {
   return (
     <div className='w-full h-12'>
       <Swiper
-        spaceBetween={20}
+        spaceBetween={10}
         slidesPerView={3}
-        className='flex flex-row w-full'
+        className='flex items-center flex-row w-full h-full'
       >
         {listMenu.map((item) => (
           <SwiperSlide key={item.value}>
             <div
-              className={`text-gray-700 dark:text-gray-100 text-center text-lg font-semibold border-transparent transform transition-all duration-200 ${
+              className={`dark:text-gray-200 text-center text-lg font-medium border-transparent transform transition-all duration-500 h-10 w-full flex items-center justify-center ${
                 currentMenuShow === item.value
-                  ? 'text-blue-800 dark:text-blue-100 border-blue-400  border-b-2'
+                  ? 'text-white border-b-2 rounded-lg bg-indigo-700 dark:bg-blue-700 dark:text-white shadow-lg'
                   : ''
               }`}
+              style={{
+                minWidth: 120,
+              }}
               onClick={() => {
                 onMenuClick(item.value);
               }}
               role='button'
             >
-              {item.label}
+              <span>{item.label}</span>
             </div>
           </SwiperSlide>
         ))}
