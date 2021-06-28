@@ -1,6 +1,7 @@
 import Loader from '../../common/Loader';
 import { useSelector } from 'react-redux';
 import FormWrapper from './FormWrapper';
+import ResponseContainer from './ResponseContainer';
 
 export default function PostmanContainer() {
   const isShowloader: boolean = useSelector(
@@ -10,6 +11,7 @@ export default function PostmanContainer() {
     <main>
       {isShowloader ? <Loader /> : null}
       <FormWrapper />
+      <ResponseContainer />
     </main>
   );
 }

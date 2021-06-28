@@ -18,7 +18,7 @@ export default class SearchBar extends PureComponent {
               <TextField />
             </div>
             <div className={`flex justify-center items-center h-full ml-2`}>
-              <HighlightBtn title='SEND' />
+              <HighlightBtn title='SEND' type='submit' />
             </div>
           </div>
         </Paper>

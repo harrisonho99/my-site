@@ -5,7 +5,7 @@ import Table from '../Table';
 export default class RequestBoard extends PureComponent {
   render = () => {
     return (
-      <Container className='mt-6'>
+      <Container maxWidth='md' className='mt-6'>
         <Table />
       </Container>
     );

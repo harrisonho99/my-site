@@ -1,5 +1,6 @@
 import styles from '../../../styles/common/Loader.module.css';
 import Modal from '../../common/ModalWrapper';
+
 export default function Loader() {
   return (
     <Modal style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}>
