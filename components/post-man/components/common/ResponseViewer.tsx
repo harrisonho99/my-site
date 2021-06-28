@@ -179,8 +179,9 @@ function ResponseViewer({ themeModeState }: Props) {
 
   return (
     <div
-      className='w-full h-96 overflow-auto bg-gray-100 dark:bg-gray-800'
+      className='w-full overflow-auto bg-gray-100 dark:bg-gray-800 p-3'
       ref={viewerRef}
+      style={{ height: 450 }}
     />
   );
 }
