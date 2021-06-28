@@ -5,7 +5,7 @@ class ResponseContainer extends PureComponent {
   render = () => {
     return (
       <Container className='mt-20 mb-10' maxWidth='md'>
-        <Paper elevation={3} className=' rounded-md overflow-hidden'>
+        <Paper elevation={4} className='rounded-md overflow-hidden'>
           <ResponseViewer />
         </Paper>
       </Container>
