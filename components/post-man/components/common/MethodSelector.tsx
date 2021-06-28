@@ -6,14 +6,19 @@ import {
   ThemeSchema,
 } from '../../../../context/prefer-theme/withPreferTheme';
 
+import { useFormikContext } from 'formik';
+
 type Props = {
   themeModeState: ThemeSchema;
 };
 function MethodSelector({ themeModeState }: Props) {
+  const { setFieldValue } = useFormikContext();
+  const name = 'method';
   const options = useSelector((state: RootStateOrAny) => state.methods.options);
   const [selectValue, setSelectValue] = useState(options[0]);
   const onSelectChange = (value: SelectValue, name: string) => {
     setSelectValue(() => value);
+    setFieldValue(name, value);
   };
   const { theme } = themeModeState;
   return (
