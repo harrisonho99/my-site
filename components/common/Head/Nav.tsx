@@ -78,6 +78,10 @@ export default function Nav() {
         sizes='16x16'
         href='/icon/favicon-16x16.png'
       />
+      <meta
+        httpEquiv='Content-Security-Policy'
+        content='upgrade-insecure-requests'
+      />
       <meta name='msapplication-TileColor' content='#171060' />
       <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
       <meta name='theme-color' content='#171060' />
