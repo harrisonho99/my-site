@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   withPreferTheme,
   ThemeSchema,
@@ -159,21 +159,23 @@ type Props = {
   themeModeState: ThemeSchema;
 };
 function ResponseViewer({ themeModeState }: Props) {
-  const { theme } = themeModeState;
+  const [theme, setTheme] = useState(themeModeState.theme);
 
   const viewerRef = useRef(null);
-
-  const countUpdate = useRef(0);
+  useEffect(() => {
+    const unSub = themeModeState.subscribe((theme) => {
+      setTheme(() => theme);
+    });
+    return unSub;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const viewerNode = viewerRef.current;
-    let count = countUpdate.current;
-    if (count) return;
     if (viewerNode && typeof window !== 'undefined') {
       const formatter = new JSONFormatter(JSON_VALUE, 1, { theme });
-
+      (viewerNode as HTMLDivElement).innerHTML = '';
       (viewerNode as HTMLDivElement).appendChild(formatter.render());
-      ++count;
     }
   }, [theme]);
 

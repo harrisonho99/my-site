@@ -2,7 +2,7 @@ import { PureComponent, Component, FC } from 'react';
 import { Theme } from './preferThemeContext';
 import { ThemeSchema } from './schema/type';
 interface withPreferThemeState {
-  comsumerState: object;
+  subscribe?: (updater: () => void) => void;
 }
 
 export function withPreferTheme(
@@ -11,10 +11,9 @@ export function withPreferTheme(
   return class ThemeConsumer extends PureComponent<any, withPreferThemeState> {
     constructor(props: any) {
       super(props);
-      this.state = { comsumerState: {} };
+      this.state = { subscribe: undefined };
     }
-    listenStateChange = () => {};
-    componentWillUnmount = () => {};
+
     render() {
       return (
         <Theme.Consumer>
