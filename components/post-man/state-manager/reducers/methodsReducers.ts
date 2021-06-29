@@ -2,13 +2,13 @@ import { SelectValue } from '../../components/InputBase/Select';
 import { EnhanceAction } from '../schema/type';
 
 const options: SelectValue[] = [
-  { label: 'GET', value: 'GET' },
-  { label: 'POST', value: 'POST' },
-  { label: 'PUT', value: 'PUT' },
-  { label: 'PATCH', value: 'PATCH' },
-  { label: 'DELETE', value: 'DELETE' },
-  { label: 'HEAD', value: 'HEAD' },
-  { label: 'OPTIONS', value: 'OPTIONS' },
+  { label: 'GET', value: 'get' },
+  { label: 'POST', value: 'post' },
+  { label: 'PUT', value: 'pust' },
+  { label: 'PATCH', value: 'patch' },
+  { label: 'DELETE', value: 'delete' },
+  { label: 'HEAD', value: 'head' },
+  { label: 'OPTIONS', value: 'options' },
 ];
 
 export default function methodsReducers(

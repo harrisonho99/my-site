@@ -1,9 +1,12 @@
 import type { SelectValue } from '../../InputBase/Select';
-
+import { EnhanceAction } from '../../../state-manager/schema/type';
 type Options = SelectValue[];
 
 type Props = {
   options: Options;
+  turnOffLoader: () => {};
+  turnOnLoader: () => {};
+  setResponseView: (data: any) => {};
 };
 
 interface FormValues {

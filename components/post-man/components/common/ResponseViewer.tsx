@@ -4,6 +4,7 @@ import {
   ThemeSchema,
 } from '../../../../context/prefer-theme/withPreferTheme';
 import JSONFormatter from 'json-formatter-js';
+import { useSelector } from 'react-redux';
 
 const JSON_VALUE = {
   CustomerCompany: [
@@ -160,8 +161,9 @@ type Props = {
 };
 function ResponseViewer({ themeModeState }: Props) {
   const [theme, setTheme] = useState(themeModeState.theme);
-
+  const DATA = useSelector((state: any) => state.response.result);
   const viewerRef = useRef(null);
+
   useEffect(() => {
     const unSub = themeModeState.subscribe((theme) => {
       setTheme(() => theme);
@@ -173,11 +175,11 @@ function ResponseViewer({ themeModeState }: Props) {
   useEffect(() => {
     const viewerNode = viewerRef.current;
     if (viewerNode && typeof window !== 'undefined') {
-      const formatter = new JSONFormatter(JSON_VALUE, 1, { theme });
+      const formatter = new JSONFormatter(DATA, 1, { theme });
       (viewerNode as HTMLDivElement).innerHTML = '';
       (viewerNode as HTMLDivElement).appendChild(formatter.render());
     }
-  }, [theme]);
+  }, [theme, DATA]);
 
   return (
     <div

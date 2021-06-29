@@ -2,27 +2,44 @@ import { PureComponent } from 'react';
 import { Formik, Form, FormikValues, FormikHelpers, FormikProps } from 'formik';
 import SearchBar from '../SearchBar';
 import RequestMenuBar from '../RequestMenuBar';
-import { request } from '../../http/client';
 import { connect, MapStateToProps } from 'react-redux';
 import type { FormValues, Options, Props } from './schema/type';
 import { InitialFormValue } from './schema';
 import { isBrowser } from '../../../../utils/isBrowser';
+import { request } from '../../http/client';
+import {
+  setLoader,
+  setResponseView,
+} from '../../state-manager/actions/creators';
+import { MapDispatchToProps } from 'react-redux';
 
 class FormWrapper extends PureComponent<Props> {
   public options: any[];
-
+  private cleanUp: null | Function = null;
   constructor(props: any) {
     super(props);
     this.options = this.props.options;
   }
 
   getInitialFornValue = () => {
-    return new InitialFormValue(this.options[0], '');
+    return new InitialFormValue(
+      this.options[0],
+      'https://jsonplaceholder.typicode.com/posts'
+    );
   };
 
-  onFormSubmit = (values: FormikValues, actions: FormikHelpers<FormValues>) => {
-    console.log({ values });
-    request;
+  onFormSubmit = async (
+    values: FormikValues,
+    actions: FormikHelpers<FormValues>
+  ) => {
+    const { turnOnLoader, setResponseView } = this.props;
+    turnOnLoader();
+    (window as any).setLoader = setLoader;
+    const baseURL = values.baseURL;
+    const method = values.method.value;
+    request.setBaseURL(baseURL);
+    const response = await (request as any)[method]('');
+    setResponseView(response.data);
   };
 
   render = () => {
@@ -47,10 +64,25 @@ class FormWrapper extends PureComponent<Props> {
       </Formik>
     );
   };
+
+  componentDidMount = () => {
+    const { turnOffLoader } = this.props;
+    this.cleanUp = request.useSubscribe(turnOffLoader);
+  };
+
+  componentWillUnmount = () => {
+    if (typeof this.cleanUp === 'function') this.cleanUp();
+  };
 }
 
 const mapStateToProps: MapStateToProps<any, any> = (state: any) => ({
   options: state.methods.options,
 });
 
-export default connect(mapStateToProps)(FormWrapper);
+const mapDispatchToProps: MapDispatchToProps<any, any> = (dispatch: any) => ({
+  turnOffLoader: () => dispatch(setLoader(false)),
+  turnOnLoader: () => dispatch(setLoader(true)),
+  setResponseView: (data: any) => dispatch(setResponseView(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormWrapper);
