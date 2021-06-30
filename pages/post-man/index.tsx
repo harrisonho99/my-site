@@ -5,6 +5,10 @@ import { Provider } from 'react-redux';
 import dynamic from 'next/dynamic';
 import Loader from '../../components/common/Loader';
 
+const Alert = dynamic(() => import('../../components/post-man/components/common/Alert'), {
+  ssr: false,
+});
+
 const PostmanContainer = dynamic(
   () => import('../../components/post-man/components/'),
   // eslint-disable-next-line react/display-name
@@ -22,6 +26,7 @@ export default function Postman() {
 
   return (
     <Provider store={store}>
+      <Alert />
       <Balloons />
       <PostmanContainer />
     </Provider>

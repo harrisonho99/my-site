@@ -4,6 +4,7 @@ import methodsReducers from './methodsReducers';
 import formReducer from './formReducer';
 import requestReducers from './requestReducers';
 import responseReducer from './responseReducer';
+import renderReducer from './renderReducer';
 
 const _ALL_REDUCERS_ = {
   tabs: tabsReducer,
@@ -11,6 +12,7 @@ const _ALL_REDUCERS_ = {
   form: formReducer,
   request: requestReducers,
   response: responseReducer,
+  render: renderReducer,
 };
 
 const rootReducer = combineReducers(_ALL_REDUCERS_);

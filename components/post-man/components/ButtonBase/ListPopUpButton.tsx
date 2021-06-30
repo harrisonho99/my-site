@@ -20,7 +20,13 @@ export default function ListPopUpButton({ title, listButton }: Props) {
     <PopupState variant='popover' popupId={title + '-popup-menu'}>
       {(popupState) => (
         <React.Fragment>
-          <Button size='small' variant='contained' color='primary' {...bindTrigger(popupState)}>
+          <Button
+            className='h-8'
+            size='small'
+            variant='contained'
+            color='primary'
+            {...bindTrigger(popupState)}
+          >
             {title}
           </Button>
           <Menu {...bindMenu(popupState)}>

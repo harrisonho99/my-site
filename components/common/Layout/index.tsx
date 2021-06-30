@@ -10,9 +10,7 @@ const Layout: FC<LayoutProps> = ({ children, themeModeState }) => {
     const HMTLNode = document.querySelector('html')!;
     const light: themePreference = 'light';
     const dark: themePreference = 'dark';
-    if (
-      !(HMTLNode.classList.contains(light) || HMTLNode.classList.contains(dark))
-    ) {
+    if (!(HMTLNode.classList.contains(light) || HMTLNode.classList.contains(dark))) {
       HMTLNode.classList.add(themeModeState.theme);
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

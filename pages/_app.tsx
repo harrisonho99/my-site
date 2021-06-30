@@ -9,7 +9,6 @@ import { ThemeState } from '../context/prefer-theme/PreferTheme';
 import PreferThemeProvider from '../context/prefer-theme/PreferThemeProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useEffect } from 'react';
-
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     (window as any).theme = ThemeState;

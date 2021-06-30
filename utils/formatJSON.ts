@@ -11,7 +11,7 @@ export function formatJSON(json: object, node: HTMLElement): HTMLElement {
       }
       return value;
     },
-    2
+    0
   );
   return node;
 }

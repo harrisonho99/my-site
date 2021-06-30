@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { v4 } from 'uuid';
 import ListPopUpButton, { ShapeButton } from '../ButtonBase/ListPopUpButton';
 import { formatJSON } from '../../../../utils/formatJSON';
+import ClipBoardButton from '../ButtonBase/ClipBoardButton';
 
 type Props = {
   themeModeState: ThemeSchema;
@@ -78,19 +79,24 @@ function ResponseViewer({ themeModeState }: Props) {
   }, [view, DATA]);
 
   return (
-    <div className='p-3 overflow-auto bg-gray-100 dark:bg-gray-800' style={{ height: 450 }}>
-      <div className='w-full h-9'>
-        <div className='float-right mb-2'>
+    <div className='bg-gray-100 dark:bg-gray-800 relative pt-0'>
+      <div className='w-full h-12 flex justify-end bg-gray-200 dark:bg-gray-900 sticky top-0 left-0 z-10'>
+        <div className='flex justify-center mr-3 items-center'>
+          <ClipBoardButton data={memoData} />
+        </div>
+        <div className='flex justify-center items-center mr-3'>
           <ListPopUpButton title={'Change View'} listButton={listButton} />
         </div>
       </div>
-      {view === 'Object' ? <div className={` w-full`} ref={objectViewerRef} /> : null}
-      {view === 'Preview' ? (
-        <div>
-          <pre ref={previewViewerRef} className='overflow-x-auto w-full' />
-        </div>
-      ) : null}
-      {view === 'Raw' ? <div>{memoData}</div> : null}
+      <div className='p-2 overflow-auto' style={{ height: 450 }}>
+        {view === 'Object' ? <div className={` w-full`} ref={objectViewerRef} /> : null}
+        {view === 'Preview' ? (
+          <div>
+            <pre ref={previewViewerRef} className='overflow-x-auto w-full text-sm' />
+          </div>
+        ) : null}
+        {view === 'Raw' ? <div>{memoData}</div> : null}
+      </div>
     </div>
   );
 }
