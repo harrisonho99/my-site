@@ -1,168 +1,59 @@
-import { useEffect, useRef, useState } from 'react';
-import {
-  withPreferTheme,
-  ThemeSchema,
-} from '../../../../context/prefer-theme/withPreferTheme';
+import { useEffect, useRef, useState, useMemo, useReducer } from 'react';
+import { withPreferTheme, ThemeSchema } from '../../../../context/prefer-theme/withPreferTheme';
 import JSONFormatter from 'json-formatter-js';
 import { useSelector } from 'react-redux';
+import { v4 } from 'uuid';
+import ListPopUpButton, { ShapeButton } from '../ButtonBase/ListPopUpButton';
+import { formatJSON } from '../../../../utils/formatJSON';
 
-const JSON_VALUE = {
-  CustomerCompany: [
-    {
-      id: '1',
-      label: 'Blackwind Sai Gon',
-      value: 1,
-    },
-    {
-      id: '2',
-      label: 'Công Ty Blackwind',
-      value: 2,
-    },
-    {
-      id: '3',
-      label: 'kim kim',
-      value: 3,
-    },
-    {
-      id: '4',
-      label: 'Công ty TNHH NHN',
-      value: 4,
-    },
-    {
-      id: '5',
-      label: 'công ty cổ phần cơ khí vinh',
-      value: 5,
-    },
-    {
-      id: '6',
-      label: 'công ty TNHH Hòa Phát',
-      value: 6,
-    },
-    {
-      id: '7',
-      label: 'công ty TNHH Bắc Vinh',
-      value: 7,
-    },
-    {
-      id: '8',
-      label: 'Công ty Thiết bị Sơn Kim',
-      value: 8,
-    },
-    {
-      id: '9',
-      label: 'Công ty thiết bị MTV Nam Phong',
-      value: 9,
-    },
-    {
-      id: '10',
-      label: 'Công ty TNHH Thái Hà',
-      value: 10,
-    },
-    {
-      id: '11',
-      label: 'Công ty cổ phần Xây dựng Thăng Long',
-      value: 11,
-    },
-    {
-      id: '12',
-      label: 'GGG',
-      value: 12,
-    },
-  ],
-  OptsCustomerType: [
-    {
-      label: 'Khách hàng nhà máy tôn',
-      value: 32,
-    },
-    {
-      label: 'Khách hàng công trình',
-      value: 33,
-    },
-    {
-      label: 'Khách lẻ',
-      value: 34,
-    },
-    {
-      label: 'Khách vật liệu xây dựng',
-      value: 35,
-    },
-  ],
-  address: 'a75 Bạch Đằng',
-  attribute_description: '',
-  attribute_values: '',
-  attribute_values_id: '',
-  birth_day: '01/05/2021',
-  birthday: '',
-  business_id: '',
-  caring_user: 'NML10022',
-  city_id: '',
-  company_id: '1',
-  country_id: 6,
-  country_name: '',
-  created_date: '',
-  created_user: '0',
-  created_user_full_name: '',
-  customer_code: 'KML00018',
-  customer_company: '1',
-  customer_company_id: 0,
-  customer_type: [
-    {
-      label: 'Khách hàng công trình',
-      name: 'customer_type',
-      value: 33,
-    },
-  ],
-  customer_type_group_id: '',
-  customer_type_group_name: '',
-  customer_type_id: [
-    {
-      label: 'Khách hàng công trình',
-      value: 33,
-    },
-  ],
-  district_id: '',
-  district_name: '',
-  email: 'honhathoang1999@gmail.com',
-  full_name: 'Hồ Sỹ Nhật Hoàng',
-  gender: '0',
-  id_card: '',
-  id_card_date: '02/05/2021',
-  id_card_place: '',
-  image_avatar: '',
-  is_active: 1,
-  is_can_email: 0,
-  is_can_sms_or_phone: 0,
-  is_change_password: 1,
-  is_confirm: 1,
-  is_deleted: '',
-  is_first_value: '',
-  is_notification: 0,
-  is_system: 0,
-  listNewAttribute: [],
-  marital_status: 0,
-  member_id: '',
-  order_index: '',
-  password: '',
-  password_confirm: '',
-  phone_number: '0886617060',
-  product_attribute_id: '',
-  product_category_id: '',
-  province_id: '',
-  province_name: '',
-  register_date: '',
-  type: '',
-  type_register: '',
-  user_name: '',
-  ward_id: '',
-  ward_name: '',
-};
 type Props = {
   themeModeState: ThemeSchema;
 };
+
+type View = 'Object' | 'Preview' | 'Raw';
+type Action = { type: 'Object' | 'Preview' | 'Raw' };
+interface State {
+  view: View;
+}
+const reducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case 'Object':
+      return { view: action.type };
+    case 'Preview':
+      return { view: action.type };
+    case 'Raw':
+      return { view: action.type };
+    default:
+      return state;
+  }
+};
+class ButtonBase implements ShapeButton {
+  constructor(public title: View, public key: string, public onClick: (title: View) => any) {}
+}
+
 function ResponseViewer({ themeModeState }: Props) {
   const [theme, setTheme] = useState(themeModeState.theme);
+  const [state, dispatch] = useReducer(reducer, { view: 'Object' });
   const DATA = useSelector((state: any) => state.response.result);
-  const viewerRef = useRef(null);
+  const objectViewerRef = useRef(null);
+  const previewViewerRef = useRef(null);
+  const { view } = state;
+
+  const memoData = useMemo(() => JSON.stringify(DATA, null, 0).trim(), [DATA]);
+  const listButton: ShapeButton[] = useMemo(
+    () => [
+      new ButtonBase('Object', v4(), (title) => {
+        dispatch({ type: title });
+      }),
+      new ButtonBase('Preview', v4(), (title) => {
+        dispatch({ type: title });
+      }),
+      new ButtonBase('Raw', v4(), (title) => {
+        dispatch({ type: title });
+      }),
+    ],
+    []
+  );
 
   useEffect(() => {
     const unSub = themeModeState.subscribe((theme) => {
@@ -171,22 +62,36 @@ function ResponseViewer({ themeModeState }: Props) {
     return unSub;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   useEffect(() => {
-    const viewerNode = viewerRef.current;
-    if (viewerNode && typeof window !== 'undefined') {
+    const objViewerNode = objectViewerRef.current;
+    if (objViewerNode && typeof window !== 'undefined' && view === 'Object') {
       const formatter = new JSONFormatter(DATA, 1, { theme });
-      (viewerNode as HTMLDivElement).innerHTML = '';
-      (viewerNode as HTMLDivElement).appendChild(formatter.render());
+      (objViewerNode as HTMLDivElement).innerHTML = '';
+      (objViewerNode as HTMLDivElement).appendChild(formatter.render());
     }
-  }, [theme, DATA]);
+  }, [theme, DATA, view]);
+  useEffect(() => {
+    const previewNode = previewViewerRef.current;
+    if (view === 'Preview' && previewNode) {
+      formatJSON(DATA, previewNode);
+    }
+  }, [view, DATA]);
 
   return (
-    <div
-      className='w-full overflow-auto bg-gray-100 dark:bg-gray-800 p-3'
-      ref={viewerRef}
-      style={{ height: 450 }}
-    />
+    <div className='p-3 overflow-auto bg-gray-100 dark:bg-gray-800' style={{ height: 450 }}>
+      <div className='w-full h-9'>
+        <div className='float-right mb-2'>
+          <ListPopUpButton title={'Change View'} listButton={listButton} />
+        </div>
+      </div>
+      {view === 'Object' ? <div className={` w-full`} ref={objectViewerRef} /> : null}
+      {view === 'Preview' ? (
+        <div>
+          <pre ref={previewViewerRef} className='overflow-x-auto w-full' />
+        </div>
+      ) : null}
+      {view === 'Raw' ? <div>{memoData}</div> : null}
+    </div>
   );
 }
 export default withPreferTheme(ResponseViewer);
