@@ -27,7 +27,6 @@ class HTTP {
   };
 
   invokeAllSubscribers = () => {
-    console.log('invokeAllSubscribers');
     this.subscribers.forEach((subscriber) => subscriber());
   };
 

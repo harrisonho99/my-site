@@ -89,10 +89,10 @@ function ResponseViewer({ themeModeState }: Props) {
         </div>
       </div>
       <div className='p-2 overflow-auto' style={{ height: 450 }}>
-        {view === 'Object' ? <div className={` w-full`} ref={objectViewerRef} /> : null}
+        {view === 'Object' ? <div className={`w-full`} ref={objectViewerRef} /> : null}
         {view === 'Preview' ? (
-          <div>
-            <pre ref={previewViewerRef} className='overflow-x-auto w-full text-sm' />
+          <div className='w-full overflow-x-auto'>
+            <pre ref={previewViewerRef} className='w-full text-sm' />
           </div>
         ) : null}
         {view === 'Raw' ? <div>{memoData}</div> : null}
