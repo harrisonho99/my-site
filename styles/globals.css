@@ -3,25 +3,30 @@
   outline: none;
   appearance: none;
 }
-html,
-body {
+html {
+  background: rgb(184, 184, 184);
   height: 100vh;
-  overflow-x: hidden;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+head {
+  overflow: hidden;
+  height: 0;
+}
+body {
+  height: 100%;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #3949ab;
 }
 
 #gradient-text {
   background: -webkit-linear-gradient(#eee, rgb(29, 129, 151));
   background: rgb(63, 94, 251);
-  background: radial-gradient(
-    circle,
-    rgb(47, 61, 255) 0%,
-    rgb(233, 44, 81) 100%
-  );
+  background: radial-gradient(circle, rgb(47, 61, 255) 0%, rgb(233, 44, 81) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -48,9 +53,6 @@ body {
   background-color: rgba(50, 50, 50, 0.5);
 }
 
-body {
-  position: relative;
-}
 button:focus {
   outline: none;
 }

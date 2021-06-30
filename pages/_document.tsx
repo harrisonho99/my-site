@@ -1,10 +1,4 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { FC } from 'react';
 
 const Wrapper: FC = () => {
@@ -24,7 +18,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html className='dark bg-blue-400'>
+      <Html className='dark'>
         <Head />
         <Wrapper />
       </Html>
