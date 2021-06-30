@@ -1,16 +1,7 @@
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  Canceler,
-} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Canceler } from 'axios';
 
 class HTTPResponse {
-  constructor(
-    public data: AxiosResponse,
-    public header: AxiosResponse,
-    public status: number
-  ) {}
+  constructor(public data: AxiosResponse, public header: AxiosResponse, public status: number) {}
 }
 
 class HTTP {
@@ -21,9 +12,7 @@ class HTTP {
   constructor(public baseURL?: string) {
     this.instance = axios.create({ baseURL });
     this.instance.defaults.timeout = this.timeOut;
-    this.instance.defaults.cancelToken = new this.CancelToken(
-      this.cancelExcutor
-    );
+    this.instance.defaults.cancelToken = new this.CancelToken(this.cancelExcutor);
   }
   private cancelExcutor = (cancel: Canceler) => {
     this.cancel = cancel;
@@ -38,6 +27,7 @@ class HTTP {
   };
 
   invokeAllSubscribers = () => {
+    console.log('invokeAllSubscribers');
     this.subscribers.forEach((subscriber) => subscriber());
   };
 
@@ -48,56 +38,34 @@ class HTTP {
     this.instance.defaults.baseURL = baseURL;
   };
   setAuthorization = (token: string, isBearer?: boolean) => {
-    this.instance.defaults.headers.common['Authorization'] = isBearer
-      ? 'Bearer ' + token
-      : token;
+    this.instance.defaults.headers.common['Authorization'] = isBearer ? 'Bearer ' + token : token;
   };
   get = async (url: string = '', config?: AxiosRequestConfig) => {
     try {
       const response = await this.instance.get(url, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }
   };
-  post = async (
-    url: string = '',
-    data?: Object,
-    config?: AxiosRequestConfig
-  ) => {
+  post = async (url: string = '', data?: Object, config?: AxiosRequestConfig) => {
     try {
       const response = await this.instance.post(url, data, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }
   };
-  put = async (
-    url: string = '',
-    data?: Object,
-    config?: AxiosRequestConfig
-  ) => {
+  put = async (url: string = '', data?: Object, config?: AxiosRequestConfig) => {
     try {
       const response = await this.instance.put(url, data, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }
@@ -107,29 +75,17 @@ class HTTP {
       const response = await this.instance.delete(url, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }
   };
-  patch = async (
-    url: string = '',
-    data?: Object,
-    config?: AxiosRequestConfig
-  ) => {
+  patch = async (url: string = '', data?: Object, config?: AxiosRequestConfig) => {
     try {
       const response = await this.instance.patch(url, data, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }
@@ -139,11 +95,7 @@ class HTTP {
       const response = await this.instance.head(url, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }
@@ -153,11 +105,7 @@ class HTTP {
       const response = await this.instance.options(url, config);
       return new HTTPResponse(response.data, response.headers, response.status);
     } catch (error: any) {
-      return new HTTPResponse(
-        error.response.data,
-        error.response.headers,
-        error.response.status
-      );
+      return new HTTPResponse(error.response.data, error.response.headers, error.response.status);
     } finally {
       this.invokeAllSubscribers();
     }

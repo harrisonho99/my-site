@@ -7,7 +7,6 @@ html {
   background: rgb(184, 184, 184);
   height: 100vh;
   width: 100vw;
-  position: relative;
   overflow: hidden;
 }
 head {
@@ -15,6 +14,9 @@ head {
   height: 0;
 }
 body {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
   height: 100%;
   padding: 0;
   margin: 0;

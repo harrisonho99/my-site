@@ -4,8 +4,8 @@ type Options = SelectValue[];
 
 type Props = {
   options: Options;
-  turnOffLoader: () => {};
-  turnOnLoader: () => {};
+  hideLoader: () => {};
+  showLoader: () => {};
   setResponseView: (data: any) => {};
 };
 

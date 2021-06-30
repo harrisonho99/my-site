@@ -1,5 +1,12 @@
 import { EnhanceAction } from '../../schema/type';
-import { CHANGE_TAB, SET_LOADER, SET_RESPONSE_VIEW, OPEN_AlERT, CLOSE_ALERT } from '../index';
+import {
+  CHANGE_TAB,
+  SHOW_LOADER,
+  HIDE_LOADER,
+  SET_RESPONSE_VIEW,
+  OPEN_AlERT,
+  CLOSE_ALERT,
+} from '../index';
 
 type Variant = 'filled' | 'outlined';
 type Severity = 'error' | 'warning' | 'info' | 'success';
@@ -14,9 +21,11 @@ const changeTab = (index: number): EnhanceAction => ({
   type: CHANGE_TAB,
   payload: index,
 });
-const setLoader = (value: boolean): EnhanceAction => ({
-  type: SET_LOADER,
-  payload: value,
+const showLoader = (): EnhanceAction => ({
+  type: SHOW_LOADER,
+});
+const hideLoader = (): EnhanceAction => ({
+  type: HIDE_LOADER,
 });
 const setResponseView = (data: any): EnhanceAction => ({
   type: SET_RESPONSE_VIEW,
@@ -33,4 +42,4 @@ const closeAlert = (): EnhanceAction => ({ type: CLOSE_ALERT });
 
 export type { RenderAlertProps, RenderAlertAction, Variant, Severity };
 
-export { changeTab, setLoader, setResponseView, openAlert, closeAlert };
+export { changeTab, showLoader, hideLoader, setResponseView, openAlert, closeAlert };
