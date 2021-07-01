@@ -99,7 +99,8 @@ export default function CustomSelect({
           paddingBottom: 4,
           color: optionColor,
           backgroundColor: menuBgColor,
-          zIndex: 60,
+          zIndex: 190,
+          position: 'absolute',
         }),
         indicatorsContainer: (base) => ({
           ...base,

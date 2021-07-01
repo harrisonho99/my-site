@@ -35,21 +35,23 @@ class FormWrapper extends PureComponent<Props> {
 
   render = () => {
     return (
-      <Formik onSubmit={this.onFormSubmit} initialValues={this.getInitialFornValue()}>
-        {(formikProps: FormikProps<FormValues>) => {
-          if (isBrowser()) {
-            (window as any).formProps = formikProps;
-          }
-          return (
-            <Form>
-              <SearchBar />
-              <div className='mt-6'>
-                <RequestMenuBar />
-              </div>
-            </Form>
-          );
-        }}
-      </Formik>
+      <div className='z-20 relative'>
+        <Formik onSubmit={this.onFormSubmit} initialValues={this.getInitialFornValue()}>
+          {(formikProps: FormikProps<FormValues>) => {
+            if (isBrowser()) {
+              (window as any).formProps = formikProps;
+            }
+            return (
+              <Form>
+                <SearchBar />
+                <div className='mt-6'>
+                  <RequestMenuBar />
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
     );
   };
 }

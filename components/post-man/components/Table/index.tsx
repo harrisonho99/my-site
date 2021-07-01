@@ -13,6 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import RoundedAddButton from '../ButtonBase/RoundedAddButton';
 import { useState } from 'react';
 import { v4 } from 'uuid';
+import HeaderSelect from '../common/HeaderSelect';
 
 const useStyles = makeStyles({
   table: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
 function createData(key: string, value: string, id: string, description?: string) {
   return { key, value, description, id };
 }
-
+let countZindex = 99;
 export default function CustomTable() {
   const [rows, setRows] = useState([
     createData('username', 'hoang', v4(), ''),
@@ -62,27 +63,27 @@ export default function CustomTable() {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody className=' '>
+          <TableBody>
             {rows.map((row) => (
-              <TableRow key={row.id} className='animate__animated animate__fadeIn'>
+              <TableRow
+                key={row.id}
+                className='animate__animated animate__fadeIn relative'
+                style={{ zIndex: --countZindex }}
+              >
                 <TableCell component='th' scope='row' className={`${classes.cell}`}>
-                  <input
-                    type='text'
-                    className='rounded-sm w-24 h-full bg-transparent'
-                    defaultValue={row.key}
-                  />
+                  <HeaderSelect />
                 </TableCell>
                 <TableCell align='left' className={`${classes.cell}`}>
                   <input
                     type='text'
-                    className='rounded-sm w-full h-full bg-transparent'
+                    className='shadow-xl rounded-sm h-full bg-transparent w-52'
                     defaultValue={row.value}
                   />
                 </TableCell>
                 <TableCell align='left' className={`${classes.cell}`}>
                   <input
                     type='text'
-                    className='rounded-sm h-full w-full bg-transparent'
+                    className='shadow-xl rounded-sm h-full w-full bg-transparent'
                     defaultValue={row.description}
                   />
                 </TableCell>
