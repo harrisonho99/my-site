@@ -1,18 +1,13 @@
 import Alert from '@material-ui/lab/Alert';
 import { useSelector, useDispatch } from 'react-redux';
-import { memo, useState, useEffect, useRef } from 'react';
+import { memo, useState, useEffect } from 'react';
 import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 import { closeAlert } from '../../../state-manager/actions/creators';
-import { TransitionProps } from '@material-ui/core/transitions';
-import { Slide, Grow } from '@material-ui/core';
+import { Slide } from '@material-ui/core';
 
 export interface State extends SnackbarOrigin {
   open: boolean;
   duration: number;
-}
-
-function GrowTransition(props: TransitionProps) {
-  return <Grow {...props} />;
 }
 
 function SimpleAlert() {

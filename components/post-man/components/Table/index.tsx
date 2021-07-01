@@ -25,12 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(
-  key: string,
-  value: string,
-  id: string,
-  description?: string
-) {
+function createData(key: string, value: string, id: string, description?: string) {
   return { key, value, description, id };
 }
 
@@ -50,11 +45,7 @@ export default function CustomTable() {
   return (
     <div className='relative mb-10'>
       <TableContainer component={Paper} elevation={3}>
-        <Table
-          className={`${classes.table}`}
-          id={styles['table-root']}
-          aria-label='simple table'
-        >
+        <Table className={`${classes.table}`} id={styles['table-root']} aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell className='' style={{ fontWeight: 600, fontSize: 14 }}>
@@ -66,22 +57,15 @@ export default function CustomTable() {
               <TableCell align='left' style={{ fontWeight: 600, fontSize: 14 }}>
                 DESCRIPTION
               </TableCell>
-              <TableCell
-                align='center'
-                style={{ fontWeight: 600, fontSize: 14 }}
-              >
+              <TableCell align='center' style={{ fontWeight: 600, fontSize: 14 }}>
                 DELETE
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody className=' '>
             {rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell
-                  component='th'
-                  scope='row'
-                  className={`${classes.cell}`}
-                >
+              <TableRow key={row.id} className='animate__animated animate__fadeIn'>
+                <TableCell component='th' scope='row' className={`${classes.cell}`}>
                   <input
                     type='text'
                     className='rounded-sm w-24 h-full bg-transparent'
