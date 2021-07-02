@@ -12,12 +12,11 @@ export default class Main extends PureComponent {
             Hello I&apos;m Harrison
           </h1>
           <h2 className='text-2xl font-semibold dark:text-purple-50'>
-            Check out my{' '}
             <a
               className='transition duration-300 ease-in-out text-blue-600 hover:text-purple-600 transform'
-              href='https://github.com/hotsnow199'
+              href='https://github.com/hotsnow199/my-site'
             >
-              github
+              🧨 Show me the code
             </a>
           </h2>
           <h3 className='font-medium text-xl mt-14 text-center text-blue-500 hover:text-blue-600'>

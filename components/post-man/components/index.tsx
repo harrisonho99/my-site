@@ -1,4 +1,4 @@
-import Loader from '../../common/Loader';
+import Loader from './Loader';
 import { useSelector } from 'react-redux';
 import FormWrapper from './FormWrapper';
 import ResponseContainer from './ResponseContainer';
@@ -9,7 +9,7 @@ export default function PostmanContainer() {
   );
   return (
     <main>
-      {isShowloader ? <Loader /> : null}
+      {isShowloader ? <Loader cancelButton/> : null}
       <FormWrapper />
       <ResponseContainer />
     </main>

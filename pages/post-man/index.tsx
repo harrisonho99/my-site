@@ -3,8 +3,8 @@ import { makeStore } from '../../components/post-man/state-manager/index';
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import dynamic from 'next/dynamic';
-import Loader from '../../components/common/Loader';
-
+import Loader from '../../components/post-man/components/Loader';
+import Head from 'next/head';
 const Alert = dynamic(() => import('../../components/post-man/components/common/Alert'), {
   ssr: false,
 });
@@ -25,10 +25,15 @@ export default function Postman() {
   }, []);
 
   return (
-    <Provider store={store}>
-      <Alert />
-      <Balloons />
-      <PostmanContainer />
-    </Provider>
+    <>
+      <Head>
+        <title>Postman ✨</title>
+      </Head>
+      <Provider store={store}>
+        <Alert />
+        <Balloons />
+        <PostmanContainer />
+      </Provider>
+    </>
   );
 }
