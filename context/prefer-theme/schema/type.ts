@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 type themePreference = 'dark' | 'light';
 type subscriber = (theme: themePreference) => void;
 interface ThemeSchema {
+  event: any;
   theme: themePreference;
   subscribers: subscriber[];
   dispatchChangeThemeSchema: (theme: themePreference) => void;
