@@ -156,17 +156,17 @@ child2.inheritanceFromMixD();
   return (
     <div className='relative mt-12'>
       <button
-        className='z-50 absolute bottom-24 right-10 shadow-2xl ml-2 inline-block px-3 py-1 text-xs font-normal leading-6 text-center text-white uppercase transition bg-blue-700 rounded-full ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none'
+        className='z-50 absolute bottom-24 right-5 shadow-2xl ml-2 inline-block px-3 py-1 text-xs font-normal leading-6 text-center text-white uppercase transition bg-blue-700 rounded-full ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none'
         onClick={onExcuteBtnClick}
       >
         Run on console
       </button>
-      {/* <button
-        className='z-50 absolute bottom-36 right-10 shadow-2xl ml-2 inline-block px-5 py-1 text-xs font-normal leading-6 text-center text-white uppercase transition bg-blue-700 rounded-full ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none'
+      <button
+        className='z-50 absolute bottom-36 right-5 shadow-2xl ml-2 inline-block px-5 py-1 text-xs font-normal leading-6 text-center text-white uppercase transition bg-blue-700 rounded-full ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none'
         onClick={onToggleThemeClick}
       >
         Toogle Theme
-      </button> */}
+      </button>
       <Editor
         height='100vh'
         defaultLanguage='javascript'
