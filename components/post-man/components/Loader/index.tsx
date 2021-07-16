@@ -3,16 +3,20 @@ import Modal from '../../../common/ModalWrapper';
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { hideLoader } from '../../state-manager/actions/creators';
-
 interface Props {
   cancelButton?: boolean;
 }
 
 export default function Loader({ cancelButton }: Props) {
-  const dispatch = useDispatch();
-  const onCloseModal = () => {
-    dispatch(hideLoader());
-  };
+  let dispatch: any;
+  let onCloseModal;
+  if (cancelButton) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    dispatch = useDispatch();
+    onCloseModal = () => {
+      dispatch(hideLoader());
+    };
+  }
 
   return (
     <Modal style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}>

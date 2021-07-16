@@ -2,6 +2,8 @@ import type { ThemeSchema, themePreference, subscriber } from './schema/type';
 class PreferTheme implements ThemeSchema {
   public theme: themePreference;
   public subscribers: subscriber[] = [];
+  static CHANGE_THEME = 'CHANGE_THEME';
+  public event: any;
   constructor(defaultTheme: themePreference) {
     this.theme = defaultTheme;
   }
@@ -10,6 +12,12 @@ class PreferTheme implements ThemeSchema {
     this.subscribers.forEach((subs) => {
       subs(this.theme);
     });
+    this.event = new CustomEvent(PreferTheme.CHANGE_THEME, {
+      detail: {
+        theme: this.theme,
+      },
+    });
+    document.dispatchEvent(this.event);
   };
   onDispatchChangeTheme = (cb: (theme: themePreference) => void) => {
     cb(this.theme);
